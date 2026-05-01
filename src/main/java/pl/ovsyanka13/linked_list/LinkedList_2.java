@@ -121,7 +121,7 @@ public class LinkedList_2 {
         size++;
     }
 
-    public LinkedList joinLists(LinkedList first, LinkedList second) {
+    public LinkedList joinLists(LinkedList_2 first, LinkedList_2 second) {
         if (first.count() == second.count()) {
             LinkedList resultList = new LinkedList();
             Node_2 firstListNode = first.head;
