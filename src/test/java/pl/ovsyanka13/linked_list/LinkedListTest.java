@@ -66,4 +66,54 @@ class LinkedListTest {
     void count() {
         assertEquals(5, linkedList.count());
     }
+
+    @Test
+    void insertAfter() {
+        // given
+        Node node = new Node(6);
+        // when
+        linkedList.insertAfter(linkedList.find(2), node);
+        // then
+        assertEquals(6, linkedList.count());
+        assertEquals(6, linkedList.find(2).next.value);
+    }
+
+    @Test
+    void insertAfterWhenNodeAfterIsNull() {
+        // given
+        Node node = new Node(6);
+        // when
+        linkedList.clear();
+        linkedList.insertAfter(null, node);
+        // then
+        assertEquals(1, linkedList.count());
+        assertEquals(6, linkedList.find(6).value);
+    }
+
+    @Test
+    void insertAfterIntoEmptyLinkedList() {
+        // given
+        Node node = new Node(6);
+        LinkedList linkedListEmpty = new LinkedList();
+        // when
+        linkedListEmpty.insertAfter(null, node);
+        // then
+        assertEquals(1, linkedListEmpty.count());
+        assertEquals(6, linkedListEmpty.find(6).value);
+        assertEquals(6, linkedListEmpty.head.value);
+        assertEquals(node, linkedListEmpty.head);
+    }
+
+    @Test
+    void insertAfterIfNodeAfterIsNotInLinkedList() {
+        // given
+        Node node = new Node(6);
+        LinkedList linkedListEmpty = new LinkedList();
+        // when
+        linkedListEmpty.insertAfter(new Node(4), node);
+        // then
+        assertEquals(0, linkedListEmpty.count());
+        assertNull(linkedListEmpty.find(6));
+        assertNull(linkedListEmpty.head);
+    }
 }

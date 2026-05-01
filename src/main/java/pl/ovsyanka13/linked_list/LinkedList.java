@@ -1,6 +1,6 @@
 package pl.ovsyanka13.linked_list;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class LinkedList {
     public Node head;
@@ -87,16 +87,45 @@ public class LinkedList {
     }
 
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
-        // здесь будет ваш код вставки узла после заданного
+        if (_nodeToInsert == null || _nodeAfter == _nodeToInsert) {
+            return;
+        }
+        Node previousNode = null;
+        Node currentNode = this.head;
+        while (currentNode != null) {
+            if (currentNode == _nodeAfter) {
+                previousNode = _nodeAfter;
+                break;
+            }
+            currentNode = currentNode.next;
+        }
 
-        // если _nodeAfter = null ,
-        // добавьте новый элемент первым в списке
+        if (_nodeAfter != null && previousNode == null) {
+            return;
+        }
+        if (this.head == null) {
+            this.head = _nodeToInsert;
+            this.tail = _nodeToInsert;
+        } else {
+            if (_nodeAfter == null) {
+                _nodeToInsert.next = this.head;
+                this.head = _nodeToInsert;
+            } else {
+                _nodeToInsert.next = _nodeAfter.next;
+                _nodeAfter.next = _nodeToInsert;
+                if (_nodeAfter == this.tail) {
+                    this.tail = _nodeToInsert;
+                }
+            }
+        }
+        size++;
     }
 }
 
 class Node {
     public int value;
     public Node next;
+
     public Node(int _value) {
         value = _value;
         next = null;
