@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LinkedListTest {
+class LinkedList_3 {
 
     private LinkedList linkedList;
 
