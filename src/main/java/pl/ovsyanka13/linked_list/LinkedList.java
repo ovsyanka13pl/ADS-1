@@ -2,6 +2,10 @@ package pl.ovsyanka13.linked_list;
 
 import java.util.*;
 
+/*
+ Задание 1
+ Реализовать LinkedList
+*/
 public class LinkedList {
     public Node head;
     public Node tail;
@@ -32,6 +36,9 @@ public class LinkedList {
         return null;
     }
 
+    // задача 4
+    // реализоавть метод findAll
+    // сложность решения: временная - O(n), пространственная - O(n)
     public ArrayList<Node> findAll(int _value) {
         ArrayList<Node> nodes = new ArrayList<Node>();
         Node node = this.head;
@@ -44,6 +51,9 @@ public class LinkedList {
         return nodes;
     }
 
+    // задача 1
+    // реализоавть метод remove
+    // сложность решения: временная - O(n), пространственная - O(1)
     public boolean remove(int _value) {
         Node currentNode = this.head;
         Node previousNode = null;
@@ -69,6 +79,9 @@ public class LinkedList {
         return false;
     }
 
+    // задача 2
+    // реализоавть метод removeAll
+    // сложность решения: временная - O(n), пространственная - O(1)
     public void removeAll(int _value) {
         boolean removed = remove(_value);
         while (removed) {
@@ -76,16 +89,25 @@ public class LinkedList {
         }
     }
 
+    // задача 3
+    // реализоавть метод clear
+    // сложность решения: временная - O(1), пространственная - O(1)
     public void clear() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
 
+    // задача 5
+    // реализоавть метод count
+    // сложность решения: временная - O(1), пространственная - O(1)
     public int count() {
         return this.size;
     }
 
+    // задача 6
+    // реализоавть метод insertAfter
+    // сложность решения: временная - O(n), пространственная - O(1)
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
         if (_nodeToInsert == null || _nodeAfter == _nodeToInsert) {
             return;
@@ -121,6 +143,10 @@ public class LinkedList {
         size++;
     }
 
+    // задача 8
+    // реализоавть метод суммирования значений нод
+    // сложность решения: временная - O(n), пространственная - O(n)
+    // пробегаем по первому и второму спискам одновременно, создаем новый список, куда кладем суммы значений двух списков
     public LinkedList joinLists(LinkedList first, LinkedList second) {
         if (first.count() == second.count()) {
             LinkedList resultList = new LinkedList();

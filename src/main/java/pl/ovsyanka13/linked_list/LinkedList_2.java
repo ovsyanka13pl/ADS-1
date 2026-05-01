@@ -121,6 +121,10 @@ public class LinkedList_2 {
         size++;
     }
 
+    // задача 8
+    // реализоавть метод суммирования значений нод
+    // сложность решения: временная - O(n), пространственная - O(n)
+    // пробегаем по первому и второму спискам одновременно, создаем новый список, куда кладем суммы значений двух списков
     public LinkedList joinLists(LinkedList_2 first, LinkedList_2 second) {
         if (first.count() == second.count()) {
             LinkedList resultList = new LinkedList();
