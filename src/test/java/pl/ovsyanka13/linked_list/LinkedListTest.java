@@ -116,4 +116,26 @@ class LinkedListTest {
         assertNull(linkedListEmpty.find(6));
         assertNull(linkedListEmpty.head);
     }
+
+    @Test
+    void joinLists() {
+        // given
+        LinkedList linkedList = new LinkedList();
+        LinkedList firsList = new LinkedList();
+        LinkedList secondList = new LinkedList();
+        firsList.addInTail(new Node(1));
+        firsList.addInTail(new Node(2));
+        firsList.addInTail(new Node(3));
+        secondList.addInTail(new Node(4));
+        secondList.addInTail(new Node(5));
+        secondList.addInTail(new Node(6));
+
+        // when
+        LinkedList resultList = linkedList.joinLists(firsList, secondList);
+
+        // then
+        assertEquals(5, resultList.head.value);
+        assertEquals(7, resultList.head.next.value);
+        assertEquals(9, resultList.tail.value);
+    }
 }

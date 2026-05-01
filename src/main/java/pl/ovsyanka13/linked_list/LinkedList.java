@@ -120,6 +120,22 @@ public class LinkedList {
         }
         size++;
     }
+
+    public LinkedList joinLists(LinkedList first, LinkedList second) {
+        if (first.count() == second.count()) {
+            LinkedList resultList = new LinkedList();
+            Node firstListNode = first.head;
+            Node secondListNode = second.head;
+            for (int i=0; i < first.count(); i++) {
+                resultList.addInTail(new Node(firstListNode.value + secondListNode.value));
+                firstListNode = firstListNode.next;
+                secondListNode = secondListNode.next;
+            }
+            return resultList;
+        } else {
+            return null;
+        }
+    }
 }
 
 class Node {
