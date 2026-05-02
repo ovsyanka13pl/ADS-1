@@ -32,10 +32,6 @@ public class LinkedList2_2 {
         size++;
     }
 
-    // задача 1
-    // реализоавть метод поиска первого узла
-    // сложность решения: временная - O(n), пространственная - O(1)
-    // пробегаем по списку с сравниваем значение. если оно совпадает - возвращаем ноду
     public Node_2 find(int _value) {
         Node_2 node2 = this.head;
         while (node2 != null) {
@@ -47,10 +43,6 @@ public class LinkedList2_2 {
         return null;
     }
 
-    // задача 2
-    // реализоавть метод поиска всех узлов
-    // сложность решения: временная - O(n), пространственная - O(1)
-    // пробегаем по списку с сравниваем значение. если оно совпадает - добавляем ноду в список и идем дальше
     public ArrayList<Node_2> findAll(int _value) {
         ArrayList<Node_2> nodes = new ArrayList<Node_2>();
         Node_2 node = this.head;
@@ -62,10 +54,6 @@ public class LinkedList2_2 {
         return nodes;
     }
 
-    // задача 3
-    // реализоавть метод удаления узла по значению
-    // сложность решения: временная - O(n), пространственная - O(1)
-    // пробегаем по списку с сравниваем значение. если оно совпадает - перекладываем ссылки предыдущей ноды на следующую
     public boolean remove(int _value) {
         Node_2 currentNode = this.head;
         Node_2 previousNode = null;
@@ -98,11 +86,6 @@ public class LinkedList2_2 {
         return false;
     }
 
-    // задача 4
-    // реализоавть метод удаления всех узлов по значению
-    // сложность решения: временная - O(n), пространственная - O(1)
-    // пробегаем по списку с сравниваем значение. если оно совпадает - перекладываем ссылки предыдущей ноды на следующую
-    // повторяем пока не останется совпадений
     public void removeAll(int _value) {
         boolean isRemoved = remove(_value);
         while (isRemoved) {
@@ -110,10 +93,6 @@ public class LinkedList2_2 {
         }
     }
 
-    // задача 7
-    // реализоавть метод очистки
-    // сложность решения: временная - O(1), пространственная - O(1)
-    // сбрасываем head, tail и size
     public void clear() {
         this.head = null;
         this.tail = null;
@@ -124,10 +103,6 @@ public class LinkedList2_2 {
         return this.size;
     }
 
-    // задача 5
-    // реализоавть метод вставки ноды после заданного узла
-    // сложность решения: временная - O(n), пространственная - O(1)
-    // пробегаем по списку. Находим ноду, после которой надо вставить, перебиваем ссылки
     public void insertAfter(Node_2 _nodeAfter, Node_2 _nodeToInsert) {
         if (_nodeToInsert == null || _nodeAfter == _nodeToInsert) {
             return;
@@ -160,10 +135,6 @@ public class LinkedList2_2 {
         size++;
     }
 
-    // задача 6
-    // реализоавть метод вставки ноды в начало
-    // сложность решения: временная - O(1), пространственная - O(1)
-    // вставляем ноду в начало, перебиваем ссылки
     public void insertToHead(Node_2 _nodeToInsert) {
         if (_nodeToInsert == null) {
             return;
@@ -171,10 +142,6 @@ public class LinkedList2_2 {
         insertAfter(null, _nodeToInsert);
     }
 
-    // задача 9
-    // реализоавть метод реверса списка
-    // сложность решения: временная - O(n), пространственная - O(1)
-    // добавляем ноды prev, next, current. Идем по списку и переставляем ссылки
     public void reverse() {
         Node_2 previous = null;
         Node_2 next = null;
@@ -191,10 +158,6 @@ public class LinkedList2_2 {
 
     }
 
-    // задача 10
-    // проверить, зациклен ли лист
-    // сложность решения: временная - O(n), пространственная - O(1)
-    // добавляем ноды fast и slow. Fast меняется в два раза быстрее. Если fast = slow - значит есть цикл
     public boolean isCycle(Node_2 head) {
         Node_2 slow = head;
         Node_2 fast = head;
@@ -208,11 +171,6 @@ public class LinkedList2_2 {
         return false;
     }
 
-    // задача 11
-    // отсортировать список
-    // сложность решения: временная - O(nlogn), пространственная - O(n)
-    // разбивае лист на половину, затем еще на половину и так, пока не останется 2 элемента в листе. сортируем их. Потом
-    // мержим два отсортированных листа
     public LinkedList2_2 mergeSort(LinkedList2_2 list) {
         if (list.head == null || list.head.next == null) {
             return list;
@@ -248,11 +206,6 @@ public class LinkedList2_2 {
         }
     }
 
-    // задача 12
-    // объединить два отсортированных списка в третий отсортирванный
-    // сложность решения: временная - O(n), пространственная - O(1)
-    // делаем указатели на первый лист и на второй лист. сравниваем их значение. Тот, чье значение меньше - добавляем
-    // ноду в новый лист и сдвигаем указатель вперед на этом листе.
     public LinkedList2_2 mergeSortedLists(LinkedList2_2 first, LinkedList2_2 second) {
         Node_2 firstNode = first.head;
         Node_2 secondNode = second.head;
