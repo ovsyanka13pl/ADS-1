@@ -3,8 +3,8 @@ package pl.ovsyanka13.linked_list_2;
 import java.util.*;
 
 public class LinkedList2_2 {
-    public Node_2 head;
-    public Node_2 tail;
+    public Node head;
+    public Node tail;
     private int size;
 
     public LinkedList2_2() {
@@ -13,13 +13,13 @@ public class LinkedList2_2 {
         size = 0;
     }
 
-    public LinkedList2_2(Node_2 head, Node_2 tail, int size) {
+    public LinkedList2_2(Node head, Node tail, int size) {
         this.head = head;
         this.tail = tail;
         this.size = size;
     }
 
-    public void addInTail(Node_2 _item) {
+    public void addInTail(Node _item) {
         if (head == null) {
             this.head = _item;
             this.head.next = null;
@@ -32,8 +32,8 @@ public class LinkedList2_2 {
         size++;
     }
 
-    public Node_2 find(int _value) {
-        Node_2 node2 = this.head;
+    public Node find(int _value) {
+        Node node2 = this.head;
         while (node2 != null) {
             if (node2.value == _value) {
                 return node2;
@@ -43,9 +43,9 @@ public class LinkedList2_2 {
         return null;
     }
 
-    public ArrayList<Node_2> findAll(int _value) {
-        ArrayList<Node_2> nodes = new ArrayList<Node_2>();
-        Node_2 node = this.head;
+    public ArrayList<Node> findAll(int _value) {
+        ArrayList<Node> nodes = new ArrayList<Node>();
+        Node node = this.head;
         while (node != null) {
             if (node.value == _value)
                 nodes.add(node);
@@ -55,8 +55,8 @@ public class LinkedList2_2 {
     }
 
     public boolean remove(int _value) {
-        Node_2 currentNode = this.head;
-        Node_2 previousNode = null;
+        Node currentNode = this.head;
+        Node previousNode = null;
         while (currentNode != null) {
             if (currentNode.value == _value) {
                 if (previousNode != null) {
@@ -103,7 +103,7 @@ public class LinkedList2_2 {
         return this.size;
     }
 
-    public void insertAfter(Node_2 _nodeAfter, Node_2 _nodeToInsert) {
+    public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
         if (_nodeToInsert == null || _nodeAfter == _nodeToInsert) {
             return;
         }
@@ -135,7 +135,7 @@ public class LinkedList2_2 {
         size++;
     }
 
-    public void insertToHead(Node_2 _nodeToInsert) {
+    public void insertToHead(Node _nodeToInsert) {
         if (_nodeToInsert == null) {
             return;
         }
@@ -143,9 +143,9 @@ public class LinkedList2_2 {
     }
 
     public void reverse() {
-        Node_2 previous = null;
-        Node_2 next = null;
-        Node_2 current = this.head;
+        Node previous = null;
+        Node next = null;
+        Node current = this.head;
         this.tail = this.head;
         while (current != null) {
             next = current.next;
@@ -158,9 +158,9 @@ public class LinkedList2_2 {
 
     }
 
-    public boolean isCycle(Node_2 head) {
-        Node_2 slow = head;
-        Node_2 fast = head;
+    public boolean isCycle(Node head) {
+        Node slow = head;
+        Node fast = head;
         while (slow != null && fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
@@ -183,7 +183,7 @@ public class LinkedList2_2 {
         return mergeSortedLists(pair.first, pair.second);
     }
 
-    public void halfSplit(Node_2 head, Pair<LinkedList2_2, LinkedList2_2> pair) {
+    public void halfSplit(Node head, Pair<LinkedList2_2, LinkedList2_2> pair) {
         if (head == null) {
             return;
         }
@@ -191,8 +191,8 @@ public class LinkedList2_2 {
             pair.first.head = head;
             pair.second.head = null;
         } else {
-            Node_2 slow = head;
-            Node_2 fast = head.next;
+            Node slow = head;
+            Node fast = head.next;
             while (fast != null) {
                 fast = fast.next;
                 if (fast != null) {
@@ -207,14 +207,14 @@ public class LinkedList2_2 {
     }
 
     public LinkedList2_2 mergeSortedLists(LinkedList2_2 first, LinkedList2_2 second) {
-        Node_2 firstNode = first.head;
-        Node_2 secondNode = second.head;
+        Node firstNode = first.head;
+        Node secondNode = second.head;
         if (firstNode == null) {
             return second;
         } else if (secondNode == null) {
             return first;
         }
-        Node_2 mergeHead;
+        Node mergeHead;
         if (firstNode.value <= secondNode.value) {
             mergeHead = firstNode;
             firstNode = firstNode.next;
@@ -223,9 +223,9 @@ public class LinkedList2_2 {
             secondNode = secondNode.next;
         }
 
-        Node_2 mergeTail = mergeHead;
+        Node mergeTail = mergeHead;
         while (firstNode != null && secondNode != null) {
-            Node_2 temp = null;
+            Node temp = null;
             if (firstNode.value <= secondNode.value) {
                 temp = firstNode;
                 firstNode = firstNode.next;
@@ -249,11 +249,11 @@ public class LinkedList2_2 {
         return new LinkedList2_2(mergeHead, mergeTail, first.size + second.size);
     }
 
-    public boolean contains(Node_2 _node) {
+    public boolean contains(Node _node) {
         if (_node == null) {
             return false;
         }
-        Node_2 node = this.head;
+        Node node = this.head;
         while (node != null) {
             if (node == _node) {
                 return true;
@@ -261,17 +261,5 @@ public class LinkedList2_2 {
             node = node.next;
         }
         return false;
-    }
-}
-
-class Node_2 {
-    public int value;
-    public Node_2 next;
-    public Node_2 prev;
-
-    public Node_2(int _value) {
-        value = _value;
-        next = null;
-        prev = null;
     }
 }
