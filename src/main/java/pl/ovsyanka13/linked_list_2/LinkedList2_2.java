@@ -33,23 +33,24 @@ public class LinkedList2_2 {
     }
 
     public Node find(int _value) {
-        Node node2 = this.head;
-        while (node2 != null) {
-            if (node2.value == _value) {
-                return node2;
+        Node current = this.head;
+        while (current != null) {
+            if (current.value == _value) {
+                return current;
             }
-            node2 = node2.next;
+            current = current.next;
         }
         return null;
     }
 
     public ArrayList<Node> findAll(int _value) {
         ArrayList<Node> nodes = new ArrayList<Node>();
-        Node node = this.head;
-        while (node != null) {
-            if (node.value == _value)
-                nodes.add(node);
-            node = node.next;
+        Node current = this.head;
+        while (current != null) {
+            if (current.value == _value) {
+                nodes.add(current);
+            }
+            current = current.next;
         }
         return nodes;
     }

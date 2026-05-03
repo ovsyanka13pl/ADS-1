@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LinkedList2_3 {
+class LinkedList2Test {
 
     private LinkedList2 linkedList2;
 
@@ -41,7 +41,6 @@ class LinkedList2_3 {
         linkedList2.addInTail(new Node(3));
         linkedList2.addInTail(new Node(3));
         linkedList2.addInTail(new Node(3));
-        // when
         // then
         assertEquals(4, linkedList2.findAll(3).size());
     }
