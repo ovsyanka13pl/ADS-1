@@ -12,39 +12,11 @@ public class Main {
         linkedList2.addInTail(new Node(5));
         linkedList2.addInTail(new Node(6));
         linkedList2.addInTail(new Node(7));
-        linkedList2.reverse();
         Node current = linkedList2.head;
         while (current != null) {
             System.out.print(current.value + "-->");
             current = current.next;
         }
         System.out.println();
-        System.out.println("-----------------------");
-        LinkedList2_2 linkedList2_2 = new LinkedList2_2();
-        linkedList2_2.addInTail(new Node(1));
-        linkedList2_2.addInTail(new Node(2));
-        linkedList2_2.addInTail(new Node(3));
-        linkedList2_2.addInTail(new Node(4));
-        linkedList2_2.addInTail(new Node(5));
-        linkedList2_2.addInTail(new Node(6));
-        linkedList2_2.addInTail(new Node(3));
-        linkedList2_2.addInTail(new Node(3));
-        linkedList2_2.addInTail(new Node(7));
-        linkedList2_2.remove(3);
-        linkedList2_2.insertToHead(new Node(8));
-        Node current_2 = linkedList2_2.head;
-        while (current_2 != null) {
-            System.out.print(current_2.value + "-->");
-            current_2 = current_2.next;
-        }
-        System.out.println();
-        System.out.println("-----------------------");
-        Node prev_2 = linkedList2_2.tail;
-        while (prev_2 != null) {
-            System.out.print(prev_2.value + "-->");
-            prev_2 = prev_2.prev;
-        }
-
-
     }
 }
