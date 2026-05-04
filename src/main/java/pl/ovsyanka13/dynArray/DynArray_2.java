@@ -3,17 +3,26 @@ package pl.ovsyanka13.dynArray;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class DynArray<T> {
+// Задача 6
+// Реализовать динамический массив на основе банковского метода
+// Изменены два метода: append и insert. Добавлена переменная bank, которая копит баланс при вставке.
+// Если bank превышает стоимость вставки и массив заполнен, создаем новый массив, увеличивая размер на стоимость
+// По сути, временная сложность не меняется. Все равно нужно пробегать весь массив и копировать его.
+// Этим способом мы просто не даем разрастаться массива в геометрической прогрессии
+// Сложность вставки при увеличении массива - O(n), но в среднем O(1)
+public class DynArray_2<T> {
     public T[] array;
     public int count;
     public int capacity;
+    public int bank;
     Class clazz;
 
-    public DynArray(Class clz) {
+    public DynArray_2(Class clz) {
         clazz = clz; // нужен для безопасного приведения типов
         // new DynArray<Integer>(Integer.class);
 
         count = 0;
+        bank = 0;
         makeArray(16);
     }
 
@@ -36,9 +45,20 @@ public class DynArray<T> {
 
     public void append(T itm) {
         if (count == array.length) {
-            makeArray(count * 2);
+            int price = 1;
+            while (price * 2 <= count + 1) {
+                price *= 2;
+            }
+            if (bank >= price) {
+                bank -= price;
+                makeArray(array.length + price);
+            } else {
+                makeArray(count * 2);
+            }
         }
         array[count] = itm;
+        bank += 3;
+        bank -= 1;
         count++;
     }
 
@@ -51,11 +71,22 @@ public class DynArray<T> {
             return;
         }
         if (count == array.length) {
-            makeArray(count * 2);
+            int price = 1;
+            while (price * 2 <= count + 1) {
+                price *= 2;
+            }
+            if (bank >= price) {
+                bank -= price;
+                makeArray(array.length + price);
+            } else {
+                makeArray(count * 2);
+            }
         }
         T[] secondArray = Arrays.copyOfRange(array, index, count);
         array[index] = itm;
         System.arraycopy(secondArray, 0, array,  index+1, secondArray.length);
+        bank += 3;
+        bank -= 1;
         count++;
     }
 
